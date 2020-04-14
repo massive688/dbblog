@@ -3,7 +3,7 @@ create table article
   id int auto_increment comment '主键'
     primary key,
   title varchar(50) not null comment '文章标题',
-  description varchar(255) null comment '文章描述',
+  description text null comment '文章描述',
   author varchar(50) null comment '文章作者',
   content longtext null comment '文章内容',
   content_format longtext null comment 'html的content',
@@ -54,7 +54,7 @@ create table book_note
   id int auto_increment comment '主键'
     primary key,
   title varchar(50) not null comment '笔记标题',
-  description varchar(255) null comment '笔记描述',
+  description text null comment '笔记描述',
   author varchar(50) null comment '笔记作者',
   content longtext null comment '笔记内容',
   content_format longtext null comment 'html的context',
@@ -93,7 +93,7 @@ create table category
   id int auto_increment comment '主键',
   name varchar(255) null comment '名称',
   type int null comment '类型：0文章，1阅读',
-  rank int null comment '级别',
+  `rank` int null comment '级别',
   parent_id int default '0' null comment '父主键',
   constraint operation_category_id_uindex
   unique (id)
@@ -104,23 +104,6 @@ alter table category
   add primary key (id)
 ;
 
-create table comment
-(
-  id int auto_increment comment '主键'
-    primary key,
-  nick_name varchar(50) null comment '昵称',
-  email varchar(255) null comment '邮箱',
-  content text null comment '评论内容',
-  parent_id int null comment '关联父Id',
-  link_id int null comment '关联Id',
-  like_num int default '0' null comment '点赞数量',
-  dislike_num int default '0' null comment '不喜欢数量',
-  comment_level int default '0' null comment '评论层级: 0：第一层，1：第二层，2：第三层',
-  create_time timestamp default CURRENT_TIMESTAMP not null comment '创建时间',
-  type int null comment '评论类型：0文章，1，阅读'
-)
-  comment '评论'
-;
 
 create table link
 (
@@ -185,7 +168,8 @@ create table recommend
 
 create table sys_menu
 (
-  menu_id bigint null,
+  menu_id bigint auto_increment
+      primary key,
   parent_id bigint null,
   name tinytext null,
   url varchar(200) null,
@@ -199,7 +183,8 @@ create table sys_menu
 
 create table sys_param
 (
-  id int null,
+  id bigint auto_increment
+      primary key,
   par_key int null,
   par_value varchar(255) null,
   menu_url varchar(255) null,
@@ -232,7 +217,8 @@ create table sys_role_menu
 
 create table sys_user
 (
-  user_id int null,
+  user_id bigint auto_increment
+      primary key,
   username tinytext null,
   password varchar(255) null,
   email tinytext null,

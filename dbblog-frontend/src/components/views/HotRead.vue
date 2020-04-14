@@ -6,7 +6,7 @@
           <a :href="'/' + topHotRead.urlType + '/' + topHotRead.linkId">
             <p class="title">{{topHotRead.title}}</p>
             <div class="tags">
-              <iv-tag  :color="index | mapTagColor" v-for="(tag , index)  in topHotRead.tagList" :key="tag.id">{{tag.name}}</iv-tag>
+              <iv-tag  :color="tag.id | mapTagColor" v-for="(tag)  in topHotRead.tagList" :key="tag.id">{{tag.name}}</iv-tag>
             </div>
             <p class="info">
               <span class="time">{{topHotRead.createTime | socialDate }}</span>
@@ -26,9 +26,9 @@
               <p class="title">{{hotRead.title}}</p>
               <p class="info">
                 <span class="time">{{hotRead.createTime | socialDate }}</span>
-                <span class="likes"><a href=""><iv-icon type="heart"></iv-icon> {{hotRead.likeNum}} </a></span>
-                <span class="comments"><a href=""><iv-icon type="compose"></iv-icon> {{hotRead.commentNum}} </a></span>
-                <span class="readings"><a href=""><iv-icon type="eye"></iv-icon> {{hotRead.readNum}} </a></span>
+                <span class="likes"><a ><iv-icon type="heart"></iv-icon> {{hotRead.likeNum}} </a></span>
+                <span class="comments"><a ><iv-icon type="compose"></iv-icon> {{hotRead.commentNum}} </a></span>
+                <span class="readings"><a ><iv-icon type="eye"></iv-icon> {{hotRead.readNum}} </a></span>
               </p>
             </a>
           </li>

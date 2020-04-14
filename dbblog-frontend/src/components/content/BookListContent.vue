@@ -47,7 +47,7 @@ import TagWall from '@/components/views/TagWall'
 import BrowseMore from '@/components/views/BrowseMore'
 import merge from 'lodash/merge'
 import {treeDataTranslate} from '@/utils'
-import {DefaultLimitSize, DefaultFilterList} from '@/common/js/const'
+import {DefaultFilterList} from '@/common/js/const'
 
 export default {
   data () {
@@ -56,11 +56,15 @@ export default {
       bookNoteList: [],
       categoryList: [],
       currentPage: 1,
-      pageSize: DefaultLimitSize,
-      categoryId: undefined,
-      selected_category: this.$route.params.id,
-      menuBookParams: {},
-      menuBookNoteParams: {},
+      pageSize: 15,
+      categoryId: this.$route.query.categoryId,
+      selected_category: this.$route.query.categoryId,
+      menuBookParams: {
+        latest: true
+      },
+      menuBookNoteParams: {
+        latest: true
+      },
       noMoreData: false,
       readingBookList: [],
       bookNoteFilterList: JSON.parse(JSON.stringify(DefaultFilterList))
@@ -196,15 +200,15 @@ export default {
   .book-list-content
     width auto
     @media only screen and (max-width: 768px)
-      margin 5px 5px 0 5px
+      margin 5px 5px 10px 5px
     @media screen and (min-width: 768px)
-      margin 10px 10px 0 10px
+      margin 10px 10px 20px 10px
     @media screen and (min-width: 992px)
-      margin 15px 35px 0 35px
+      margin 15px 35px 50px 35px
     @media screen and (min-width: 1200px)
       width 1200px
       margin 15px auto 0
-      margin-bottom 200px
+      margin-bottom 50px
     .layout-left, .layout-right
       padding 0
       @media only screen and (max-width: 768px)

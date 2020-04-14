@@ -15,7 +15,7 @@ export const ResponsivePoint = {
 }
 
 // 默认请求数据时的limit size
-export const DefaultLimitSize = 5
+export const DefaultLimitSize = 10
 
 // section title默认的menus
 export const DefaultFilterList = [
@@ -27,11 +27,6 @@ export const DefaultFilterList = [
   {
     name: '点赞最多',
     type: 'favorite',
-    active: false
-  },
-  {
-    name: '评论最多',
-    type: 'commentMost',
     active: false
   },
   {

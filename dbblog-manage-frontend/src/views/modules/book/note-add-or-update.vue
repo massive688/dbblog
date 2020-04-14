@@ -127,7 +127,8 @@ export default {
       bookNote: {
         recommend: false,
         tagList: [],
-        type: 2
+        type: 2,
+        coverType: 2 // 默认无图片
       },
       coverTypeList: this.getSysParamArr('ARTICLE_COVER_TYPE'),
       url: '',
@@ -284,7 +285,7 @@ export default {
       })
     },
     mavonChangeHandle (value, render) {
-      this.bookNote.contentFormat = marked(value)
+      this.bookNote.contentFormat = marked(value, {breaks: true})
     }
   }
 }

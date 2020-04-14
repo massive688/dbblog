@@ -1,11 +1,24 @@
 package cn.dblearn.blog.config;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import cn.dblearn.blog.common.constants.RedisCacheNames;
+import org.springframework.cache.CacheManager;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.redis.cache.RedisCacheConfiguration;
+import org.springframework.data.redis.cache.RedisCacheManager;
+import org.springframework.data.redis.cache.RedisCacheWriter;
 import org.springframework.data.redis.connection.RedisConnectionFactory;
 import org.springframework.data.redis.core.*;
+import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer;
+import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
+import org.springframework.data.redis.serializer.RedisSerializationContext;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
+
+import javax.annotation.Resource;
+import java.time.Duration;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * RedisConfig
@@ -16,11 +29,39 @@ import org.springframework.data.redis.serializer.StringRedisSerializer;
  * @description redis配置
  */
 @Configuration
-//@EnableCaching
+@EnableCaching
 public class RedisConfig {
 
-    @Autowired
+    @Resource
     private RedisConnectionFactory redisConnectionFactory;
+
+    @Bean
+    public CacheManager cacheManager() {
+        return new RedisCacheManager(
+                RedisCacheWriter.nonLockingRedisCacheWriter(redisConnectionFactory),
+                // 未配置的 key 的默认一周过期
+                RedisCacheConfiguration.defaultCacheConfig().entryTtl(Duration.ofDays(7))
+                        .serializeValuesWith(RedisSerializationContext.SerializationPair.fromSerializer(new GenericJackson2JsonRedisSerializer())),
+                this.getRedisCacheConfigurationMap()
+        );
+    }
+
+    /**
+     * 自定义缓存过期时间
+     */
+    private Map<String, RedisCacheConfiguration> getRedisCacheConfigurationMap() {
+        Map<String, RedisCacheConfiguration> redisCacheConfigurationMap = new HashMap<>(1);
+        // 文章、图书的缓存默认一天失效
+        redisCacheConfigurationMap.put(RedisCacheNames.ARTICLE, RedisCacheConfiguration.defaultCacheConfig().entryTtl(Duration.ofDays(1))
+                .serializeValuesWith(RedisSerializationContext.SerializationPair.fromSerializer(new GenericJackson2JsonRedisSerializer())));
+        redisCacheConfigurationMap.put(RedisCacheNames.BOOK, RedisCacheConfiguration.defaultCacheConfig().entryTtl(Duration.ofDays(1))
+                .serializeValuesWith(RedisSerializationContext.SerializationPair.fromSerializer(new GenericJackson2JsonRedisSerializer())));
+        redisCacheConfigurationMap.put(RedisCacheNames.BOOKNOTE, RedisCacheConfiguration.defaultCacheConfig().entryTtl(Duration.ofDays(1))
+                .serializeValuesWith(RedisSerializationContext.SerializationPair.fromSerializer(new GenericJackson2JsonRedisSerializer())));
+        return redisCacheConfigurationMap;
+    }
+
+
     @Bean
     public RedisTemplate<String, Object> redisTemplate() {
         RedisTemplate<String, Object> redisTemplate = new RedisTemplate<>();
@@ -32,7 +73,6 @@ public class RedisConfig {
         redisTemplate.setConnectionFactory(redisConnectionFactory);
         return redisTemplate;
     }
-
 
     @Bean
     public HashOperations<String, String, Object> hashOperations(RedisTemplate<String, Object> redisTemplate) {

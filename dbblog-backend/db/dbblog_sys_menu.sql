@@ -2,7 +2,7 @@ INSERT INTO dbblog.sys_menu (menu_id, parent_id, name, url, perms, type, icon, o
 INSERT INTO dbblog.sys_menu (menu_id, parent_id, name, url, perms, type, icon, order_num) VALUES (2, 1, '管理员列表', 'sys/user', null, 1, 'admin', 1);
 INSERT INTO dbblog.sys_menu (menu_id, parent_id, name, url, perms, type, icon, order_num) VALUES (3, 1, '角色管理', 'sys/role', null, 1, 'role', 2);
 INSERT INTO dbblog.sys_menu (menu_id, parent_id, name, url, perms, type, icon, order_num) VALUES (4, 1, '菜单管理', 'sys/menu', null, 1, 'menu', 3);
-INSERT INTO dbblog.sys_menu (menu_id, parent_id, name, url, perms, type, icon, order_num) VALUES (5, 1, 'SQL监控', 'http://localhost:8080/dbBlog/druid/sql.html', null, 1, 'sql', 5);
+INSERT INTO dbblog.sys_menu (menu_id, parent_id, name, url, perms, type, icon, order_num) VALUES (5, 1, 'SQL监控', 'http://localhost:8080/dbblog/druid/sql.html', null, 1, 'config', 5);
 INSERT INTO dbblog.sys_menu (menu_id, parent_id, name, url, perms, type, icon, order_num) VALUES (15, 2, '查看', null, 'sys:user:list,sys:user:info', 2, null, 0);
 INSERT INTO dbblog.sys_menu (menu_id, parent_id, name, url, perms, type, icon, order_num) VALUES (16, 2, '新增', null, 'sys:user:save,sys:role:select', 2, null, 0);
 INSERT INTO dbblog.sys_menu (menu_id, parent_id, name, url, perms, type, icon, order_num) VALUES (17, 2, '修改', null, 'sys:user:update,sys:role:select', 2, null, 0);
@@ -36,12 +36,6 @@ INSERT INTO dbblog.sys_menu (menu_id, parent_id, name, url, perms, type, icon, o
 INSERT INTO dbblog.sys_menu (menu_id, parent_id, name, url, perms, type, icon, order_num) VALUES (52, 50, '新增', null, 'operation:tag:save', 2, null, 6);
 INSERT INTO dbblog.sys_menu (menu_id, parent_id, name, url, perms, type, icon, order_num) VALUES (53, 50, '修改', null, 'operation:tag:update', 2, null, 6);
 INSERT INTO dbblog.sys_menu (menu_id, parent_id, name, url, perms, type, icon, order_num) VALUES (54, 50, '删除', null, 'operation:tag:delete', 2, null, 6);
-INSERT INTO dbblog.sys_menu (menu_id, parent_id, name, url, perms, type, icon, order_num) VALUES (55, 60, '评论管理', 'comment/comment', null, 1, 'comment', 6);
-INSERT INTO dbblog.sys_menu (menu_id, parent_id, name, url, perms, type, icon, order_num) VALUES (56, 55, '查看', null, 'comment:list,comment:info', 2, null, 6);
-INSERT INTO dbblog.sys_menu (menu_id, parent_id, name, url, perms, type, icon, order_num) VALUES (57, 55, '新增', null, 'comment:save', 2, null, 6);
-INSERT INTO dbblog.sys_menu (menu_id, parent_id, name, url, perms, type, icon, order_num) VALUES (58, 55, '修改', null, 'comment:update', 2, null, 6);
-INSERT INTO dbblog.sys_menu (menu_id, parent_id, name, url, perms, type, icon, order_num) VALUES (59, 55, '删除', null, 'comment:delete', 2, null, 6);
-INSERT INTO dbblog.sys_menu (menu_id, parent_id, name, url, perms, type, icon, order_num) VALUES (60, 0, '评论管理', null, null, 0, 'comment', 5);
 INSERT INTO dbblog.sys_menu (menu_id, parent_id, name, url, perms, type, icon, order_num) VALUES (61, 66, '图书管理', 'book/book', null, 1, 'list', 3);
 INSERT INTO dbblog.sys_menu (menu_id, parent_id, name, url, perms, type, icon, order_num) VALUES (62, 61, '查看', null, 'book:list,book:info', 2, null, 6);
 INSERT INTO dbblog.sys_menu (menu_id, parent_id, name, url, perms, type, icon, order_num) VALUES (63, 61, '新增', null, 'book:save', 2, null, 6);
@@ -65,3 +59,4 @@ INSERT INTO dbblog.sys_menu (menu_id, parent_id, name, url, perms, type, icon, o
 INSERT INTO dbblog.sys_menu (menu_id, parent_id, name, url, perms, type, icon, order_num) VALUES (81, 79, '新增', null, 'operation:recommend:save', 2, null, 6);
 INSERT INTO dbblog.sys_menu (menu_id, parent_id, name, url, perms, type, icon, order_num) VALUES (82, 79, '修改', null, 'operation:recommend:update', 2, null, 6);
 INSERT INTO dbblog.sys_menu (menu_id, parent_id, name, url, perms, type, icon, order_num) VALUES (83, 79, '删除', null, 'operation:recommend:delete', 2, null, 6);
+INSERT INTO dbblog.sys_menu (menu_id, parent_id, name, url, perms, type, icon, order_num) VALUES (84, 32, '刷新缓存', null, 'article:cache:refresh', 2, null, 0);
