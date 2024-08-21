@@ -1,6 +1,5 @@
-> 欢迎加入QQ群讨论：764251186
+> 工作时间原因，已不维护了，请见谅！
 
-也有微信群，加我的微信吧：
 
 ![image.png](http://oss.dblearn.cn/dbblog/20200314/be0b7b34f536421690a41e4063ddecc5.png)
 
@@ -29,8 +28,6 @@
 - jasypt 加密
 - 七牛云 图床
 
-## 站点演示
-[www.dblearn.cn](www.dblearn.cn)
 
 ## 模块分层
 ### 后端模块
